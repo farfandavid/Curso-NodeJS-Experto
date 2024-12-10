@@ -1,0 +1,34 @@
+{
+  "name": "02-bases",
+  "version": "1.0.0",
+  "description": "Esta es mi primera aplicación real de Node",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "build": "npm run test && rimraf  ./dist && npx tsc --project tsconfig.build.json",
+    "start": "node dist/app.js",
+    "predev": "rimraf ./dist && npx tsc --project tsconfig.build.json",
+    "dev": "concurrently -n \"TS,NODE\" -c \"blue.bold,green.bold\" \"npx tsc --watch\" \"node --watch dist/app.js\""
+  },
+  "author": "Farfan David Dante",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.9.0",
+    "@types/uuid": "^9.0.2",
+    "concurrently": "^9.1.0",
+    "jest": "^29.7.0",
+    "rimraf": "^6.0.1",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "uuid": "^11.0.2",
+    "winston": "^3.16.0"
+  }
+}
