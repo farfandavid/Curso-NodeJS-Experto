@@ -16,9 +16,9 @@ export class Server {
         console.log('Server started')
         console.log(envVars);
 
-        new SendEmailLogs(emailService, fileSystemLogRepository).execute([
-            'farfetchdev@hotmail.com'
-        ]);
+        // new SendEmailLogs(emailService, fileSystemLogRepository).execute([
+        //     'farfetchdev@hotmail.com'
+        // ]);
 
         // CronService.createJob(
         //     '*/2 * * * * *',
