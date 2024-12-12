@@ -1,3 +1,5 @@
+
+
 export enum LogSeveityLevel {
     low = 'low',
     medium = 'medium',
@@ -25,9 +27,10 @@ export class LogEntity implements LogEntityOptions {
         this.origin = options.origin;
     }
 
-    static fromJSON = (json: any): LogEntity => {
-        const { message, level, createdAt } = JSON.parse(json);
-        if (!message || !level || !createdAt) {
+    static fromJSON = (json: string): LogEntity => {
+        json = (json === '') ? '{}' : json;
+        const { message, level, createdAt, origin } = JSON.parse(json);
+        if (!message || !level || !createdAt || !origin) {
             throw new Error('Invalid JSON');
         }
 
@@ -35,8 +38,25 @@ export class LogEntity implements LogEntityOptions {
             message,
             level,
             createdAt,
-            origin: 'log.entity.ts'
+            origin
         });
+        return log;
+    }
+
+    static fromObject = (object: { [key: string]: any }): LogEntity => {
+        const { message, level, createdAt, origin } = object;
+
+        if (!message || !level || !createdAt || !origin) {
+            throw new Error('Invalid object');
+        }
+
+        const log = new LogEntity({
+            message,
+            level,
+            createdAt,
+            origin
+        });
+
         return log;
     }
 }

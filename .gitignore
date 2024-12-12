@@ -7,3 +7,5 @@ outputs/
 tmp/
 volume/
 logs/
+playground/
+migrations/
